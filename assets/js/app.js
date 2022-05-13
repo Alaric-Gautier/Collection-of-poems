@@ -1,5 +1,6 @@
 
 import '../css/app.scss';
+import '../css/styles.css';
 
 import {Dropdown} from "bootstrap";
 
