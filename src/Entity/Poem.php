@@ -37,7 +37,7 @@ class Poem implements TimestampedInterface
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $updatedAt;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'poems')]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'poems')]
     private $categories;
 
     #[ORM\OneToMany(mappedBy: 'poem', targetEntity: Comment::class, orphanRemoval: true)]
