@@ -1,25 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les poèmes de Kelly !{% endblock %}
+{% block title %}Homepage{% endblock %}
 
 {% block body %}
     <!-- Main Content-->
-    <div class="container px-4 px-lg-5">
-        <div class="row gx-4 gx-lg-5 justify-content-center">
-            <div class="col-md-10 col-lg-8 col-xl-7">
-                <div class="col-md-8">
-                    <h3 class="pb-4 mb-4 fst-italic border-bottom">Recent poems</h3>
+    <main class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h3 class="pb-4 mb-4 fst-italic border-bottom">Recent poems</h3>
+                <div id="poem-list" class="px-5">
+                    {% include 'poem/list.html.twig' with { poems }%}
                 </div>
-                <!-- Post preview-->
-                <div class="poem-list">
-                    {% include 'poem/list.html.twig' with { poems } %}
-                </div>
-                <!-- Divider-->
-                <hr class="my-4">
+            </div>
 
-                <!-- Pager-->
-                <div class="d-flex justify-content-end mb-4"><a class="btn btn-primary text-uppercase" href="#!">Older Posts →</a></div>
+                <!-- Side menu-->
+            <div class="col-md-4">
+                <div class="position-sticky" style="top: 2rem;">
+                    {% include 'widget/categories.html.twig' %}
+                </div>
+
             </div>
         </div>
-    </div>
+    </main>
 {% endblock %}
