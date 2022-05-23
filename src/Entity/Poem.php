@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use App\Model\TimestampedInterface;
 use App\Repository\PoemRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: PoemRepository::class)]
-class Poem
+class Poem implements TimestampedInterface
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -36,7 +37,7 @@ class Poem
     #[ORM\Column(type: 'datetime', nullable: true)]
     private $updatedAt;
 
-    #[ORM\ManyToMany(targetEntity: Category::class, mappedBy: 'poems')]
+    #[ORM\ManyToMany(targetEntity: Category::class, inversedBy: 'poems')]
     private $categories;
 
     #[ORM\OneToMany(mappedBy: 'poem', targetEntity: Comment::class, orphanRemoval: true)]
