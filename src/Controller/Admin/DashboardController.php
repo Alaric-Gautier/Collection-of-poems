@@ -3,6 +3,8 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Category;
+use App\Entity\Comment;
+use App\Entity\Menu;
 use App\Entity\Poem;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -37,7 +39,7 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
+        yield MenuItem::linkToRoute('Go back to the site', 'fa fa-undo', 'app_home');
 
         yield MenuItem::subMenu('Poems', 'fas fa-newspaper')->setSubItems([
             MenuItem::linkToCrud('All poems', 'fas fa-newspaper', Poem::class),
@@ -45,5 +47,7 @@ class DashboardController extends AbstractDashboardController
             MenuItem::linkToCrud('Categories', 'fas fa-list', Category::class),
             MenuItem::linkToCrud('Add', 'fas fa-plus', Category::class)->setAction(Crud::PAGE_NEW)
         ]);
+
+        yield MenuItem::linkToCrud('Comments', 'fas fa-comment', Comment::class);
     }
 }

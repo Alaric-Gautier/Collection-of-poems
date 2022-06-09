@@ -14,7 +14,7 @@ class HomeController extends AbstractController
     public function index(PoemRepository $poemRepository, CategoryRepository $categoryRepository): Response
     {
         return $this->render('home/index.html.twig', [
-            'poems' => $poemRepository->findAll(),
+            'poems' => $poemRepository->findBy([], ['createdAt' => 'desc'], 5),
             'categories' => $categoryRepository->findAll()
         ]);
     }
