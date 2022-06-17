@@ -10,7 +10,15 @@
 
         {{ poem.content|raw }}
 
+        <h2 class="comment-title mt-5">
+            <span id="comment-count">{{ poem.comments|length }} comment(s)</span>
+        </h2>
 
+        <hr>
+
+        <div class="comment-area mb-5">
+            {{ form(commentForm) }}
+        </div>
 
         <a class="nav-link px-lg-3 py-3 py-lg-4" href="{{ path('app_home') }}">Back</a>
 
