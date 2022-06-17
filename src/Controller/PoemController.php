@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Poem;
 use App\Form\Type\CommentType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -17,7 +18,9 @@ class PoemController extends AbstractController
             return $this->redirectToRoute('app_home');
         }
 
-        $commentForm = $this->createForm(CommentType::class);
+        $comment = new Comment($poem);
+
+        $commentForm = $this->createForm(CommentType::class, $comment);
 
         return $this->renderForm('poem/show.html.twig', [
             'poem' => $poem,
